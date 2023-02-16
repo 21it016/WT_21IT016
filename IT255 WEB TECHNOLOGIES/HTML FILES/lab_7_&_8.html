@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation</title>
+</head>
+<body>
+
+<h1>Registration Form</h1>
+
+<form name="formname" method="post">
+
+    Name : <input type="text" id="username" placeholder="Enter Your Name">
+    <span id="usernameerr"> </span>
+    <br><br>
+
+    Password : <input type="password" id="passwd" placeholder="Enter Your Password">
+    <span id="passwderr"></span>
+    <br><br>
+
+    <input type="checkbox" id="v1" name="vehicle[]" value="Bike">
+    <label for="v1"> I have a bike</label><br>
+
+    <input type="checkbox" id="v2" name="vehicle[]" value="Car">
+    <label for="v2"> I have a car</label><br>
+
+    <input type="checkbox" id="v3"  name="vehicle[]" value="BiCycle">
+    <label for="v3"> I have a BiCycle</label><br>
+
+    <br>
+    <input type="button" value="Submit" onclick="doval();">
+
+ </form>
+
+    <script>
+
+        function doval(){
+            let m = document.formname.username.value;
+            let n = document.formname.passwd.value;
+
+            let flag = true;
+
+            if(m.length == 0)
+            {
+                    document.getElementById("usernameerr").textContent="Please Enter Your Name";
+                    document.getElementById("username").focus();
+                    flag = false;
+            }
+            else
+            {
+                document.getElementById("usernameerr").textContent = "";
+            }
+
+
+            if(n.length == 0)
+            {
+                document.getElementById("passwderr").textContent="Please Enter Password";
+                document.getElementById("passwd").focus();
+                flag = false;
+            }
+            else
+            {
+                document.getElementById("passwderr").textContent = "";
+            }
+
+
+
+            if(flag)
+            {
+                document.formname.submit();
+            }
+        }    
+        
+    </script>
+
+</body>
+</html>
