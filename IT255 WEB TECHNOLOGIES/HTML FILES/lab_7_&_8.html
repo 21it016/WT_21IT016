@@ -29,6 +29,9 @@
     <input type="checkbox" id="v3"  name="vehicle[]" value="BiCycle">
     <label for="v3"> I have a BiCycle</label><br>
 
+    <input type="checkbox" id="v4"  name="vehicle[]" value="No vehicle">
+    <label for="v3"> I have a no vehicle</label><br>
+
     <br>
     <input type="button" value="Submit" onclick="doval();">
 
@@ -39,9 +42,18 @@
         function doval(){
             let m = document.formname.username.value;
             let n = document.formname.passwd.value;
+            let vehicle = document.getElementsByName("vehicle[]");
+            let cnt = 0;
 
             let flag = true;
 
+            for (var i=0;i<vehicle.length;i++)
+            {
+                if(vehicle[i].checked)
+                {
+                    cnt++;
+                }
+            }
             if(m.length == 0)
             {
                     document.getElementById("usernameerr").textContent="Please Enter Your Name";
@@ -66,7 +78,14 @@
             }
 
 
-
+            if(cnt < 2)
+            {
+                document.getElementById("v1").textContent="Select atleast 1 choice";
+            }
+            else
+            {
+                document.getElementById("v1").textContent="";
+            }
             if(flag)
             {
                 document.formname.submit();
